@@ -10,11 +10,11 @@ class DriehoekTestKort {
     private Driehoek d1;
 
     @BeforeEach
-    public void before() {
+    void before() {
         d1 = new Driehoek(3, 4, 5);
     }
     @Test
-    public void maakDriehoek_DrieGeldigeZijden_MaaktDriehoek() {
+    void maakDriehoek_DrieGeldigeZijden_MaaktDriehoek() {
 
         Assertions.assertEquals(3, d1.getA());
         Assertions.assertEquals(4, d1.getB());
@@ -23,7 +23,7 @@ class DriehoekTestKort {
 
     @ParameterizedTest
     @ValueSource(ints = {-10, 0})
-    public void maakDriehoek_ZijdeATeKlein_MaaktDriehoekMetZijdeAGelijkAan1(int z) {
+    void maakDriehoek_ZijdeATeKlein_MaaktDriehoekMetZijdeAGelijkAan1(int z) {
         Driehoek d = new Driehoek(z, 5, 8);
         Assertions.assertEquals(Driehoek.STANDAARD_WAARDE, d.getA());
         Assertions.assertEquals(5, d.getB());
@@ -32,7 +32,7 @@ class DriehoekTestKort {
 
     @ParameterizedTest
     @ValueSource(ints = {-10, 0})
-    public void maakDriehoek_ZijdeBNetTeKlein_MaaktDriehoekMetZijdeBGelijkAan1(int z) {
+    void maakDriehoek_ZijdeBNetTeKlein_MaaktDriehoekMetZijdeBGelijkAan1(int z) {
         Driehoek d = new Driehoek(5, z, 8);
         Assertions.assertEquals(5, d.getA());
         Assertions.assertEquals(Driehoek.STANDAARD_WAARDE, d.getB());
@@ -42,7 +42,7 @@ class DriehoekTestKort {
 
     @ParameterizedTest
     @ValueSource(ints = {-10, 0})
-    public void maakDriehoek_ZijdeCNetTeKlein_MaaktDriehoekMetZijdeCGelijkAan1(int z) {
+    void maakDriehoek_ZijdeCNetTeKlein_MaaktDriehoekMetZijdeCGelijkAan1(int z) {
         Driehoek d = new Driehoek(5, 8, z);
         Assertions.assertEquals(5, d.getA());
         Assertions.assertEquals(8, d.getB());
@@ -51,25 +51,25 @@ class DriehoekTestKort {
 
 
     @Test
-    public void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeA_retourneertTrue() {
+    void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeA_retourneertTrue() {
         Driehoek d = new Driehoek(5, 3, 4);
         Assertions.assertTrue(d.isRechthoekig());
     }
 
     @Test
-    public void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeB_retourneertTrue() {
+    void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeB_retourneertTrue() {
         Driehoek d = new Driehoek(3, 5, 4);
         Assertions.assertTrue(d.isRechthoekig());
     }
 
     @Test
-    public void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeC_retourneertTrue() {
+    void isRechthoekig_RechthoekigeDriehoekMetSchuineZijdeC_retourneertTrue() {
 
         Assertions.assertTrue(d1.isRechthoekig());
     }
 
     @Test
-    public void isRechthoekig_GeenRechthoekigeDriehoek_retourneertFalse() {
+    void isRechthoekig_GeenRechthoekigeDriehoek_retourneertFalse() {
         Driehoek d = new Driehoek(5, 4, 5);
         Assertions.assertFalse(d.isRechthoekig());
     }

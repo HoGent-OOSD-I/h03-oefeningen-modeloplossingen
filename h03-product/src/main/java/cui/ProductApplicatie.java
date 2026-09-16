@@ -1,12 +1,10 @@
 package cui;
 
 import domein.Product;
-import java.util.Scanner;
 
 public class ProductApplicatie {
-    public static void main(String[] args) {
-        ProductApplicatie pa = new ProductApplicatie();
-        pa.start();
+    void main() {
+        start();
     }
 
     private void start() {
@@ -27,17 +25,16 @@ public class ProductApplicatie {
 
         double totalePrijs = prijsP1 + prijsP2 + prijsP3;
 
-        System.out.printf("%nAan de kassa zal u %.2f EURO moeten betalen.%n", totalePrijs);
+        IO.println(String.format("%nAan de kassa zal u %.2f EURO moeten betalen.", totalePrijs));
     }
 
     private int geefAantalStuks(String naam)
     {
-        Scanner invoer = new Scanner(System.in);
         int aantal;
         do
         {
-            System.out.printf("%nHoeveel stuk wilt u van '%s'? ", naam);
-            aantal = invoer.nextInt();
+            String boodschap = String.format("%nHoeveel stuks wilt u van '%s'? ", naam);
+            aantal = Integer.parseInt(IO.readln(boodschap));
         }while (aantal < 0);
         return aantal;
     }

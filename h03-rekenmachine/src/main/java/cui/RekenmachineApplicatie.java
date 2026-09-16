@@ -1,14 +1,11 @@
 package cui;
 
-import java.util.Scanner;
-
 import domein.Rekenmachine;
 
 public class RekenmachineApplicatie {
 
-    public static void main(String[] args) {
-        RekenmachineApplicatie ra = new RekenmachineApplicatie();
-        ra.start();
+    void main() {
+        start();
     }
 
     private void start() {
@@ -47,23 +44,19 @@ public class RekenmachineApplicatie {
     }
 
     private double leesGetal(String boodschap) {
-        Scanner invoer = new Scanner(System.in);
-        System.out.print(boodschap);
-        return invoer.nextDouble();
+        return Double.parseDouble(IO.readln(boodschap));
     }
 
     private void toonResultaat(double getal1, double getal2, char c, double resultaat) {
-        System.out.printf("%.2f %c %.2f = %.2f%n%n", getal1, c, getal2, resultaat);
+        IO.println(String.format("%.2f %c %.2f = %.2f%n", getal1, c, getal2, resultaat));
     }
 
     private int maakMenuKeuze() {
-        Scanner invoer = new Scanner(System.in);
         int keuze;
         do {
-            System.out.println(
+            IO.println(
                     "Welke actie wil je uitvoeren?\n 1. Som \n 2. Verschil\n 3. Vermenigvuldiging\n 4. Deling\n 5. Stoppen");
-            System.out.print("Geef je keuze in: ");
-            keuze = invoer.nextInt();
+            keuze = Integer.parseInt(IO.readln("Geef je keuze in: "));
         } while (keuze < 1 || keuze > 5);
         return keuze;
     }

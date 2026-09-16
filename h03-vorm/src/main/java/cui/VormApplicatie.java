@@ -1,24 +1,18 @@
 package cui;
 
-import java.util.Scanner;
-
 import domein.Driehoek;
 import domein.Rechthoek;
 
 public class VormApplicatie {
 
-    public static void main(String[] args) {
-
-        VormApplicatie va = new VormApplicatie();
-        va.start();
+    void main() {
+        start();
     }
-
-    private Scanner invoer = new Scanner(System.in);
 
     private void start() {
 
-        System.out.println("Rechthoeken en driehoeken");
-        System.out.println("-------------------------");
+        IO.println("Rechthoeken en driehoeken");
+        IO.println("-------------------------");
 
         int aantalRechthoekenOppGroterDan50 = 0;
         int aantalRechthoekigeDriehoeken = 0;
@@ -32,10 +26,8 @@ public class VormApplicatie {
             {
                 case 1 -> {//rechthoek
 
-                    System.out.print("Geef de lengte van de rechthoek: ");
-                    double lengte = invoer.nextDouble();
-                    System.out.print("Geef de breedte van de rechthoek: ");
-                    double breedte = invoer.nextDouble();
+                    double lengte = Double.parseDouble(IO.readln("Geef de lengte van de rechthoek: "));
+                    double breedte = Double.parseDouble(IO.readln("Geef de breedte van de rechthoek: "));
 
                     Rechthoek r = new Rechthoek(lengte,breedte);
 
@@ -44,12 +36,9 @@ public class VormApplicatie {
                 }
                 case 2 -> {//driehoek
 
-                    System.out.print("Geef de lengte van zijde A: ");
-                    int zijdeA = invoer.nextInt();
-                    System.out.print("Geef de lengte van zijde B: ");
-                    int zijdeB = invoer.nextInt();
-                    System.out.print("Geef de lengte van zijde C: ");
-                    int zijdeC = invoer.nextInt();
+                    int zijdeA = Integer.parseInt(IO.readln("Geef de lengte van zijde A: "));
+                    int zijdeB = Integer.parseInt(IO.readln("Geef de lengte van zijde B: "));
+                    int zijdeC = Integer.parseInt(IO.readln("Geef de lengte van zijde C: "));
 
                     Driehoek d = new Driehoek(zijdeA,zijdeB,zijdeC);
 
@@ -63,18 +52,17 @@ public class VormApplicatie {
 
         }
 
-        System.out.println("Overzicht vormen:");
-        System.out.printf("Totaal aantal vormen: %d%n", totaalAantalVormen);
-        System.out.printf("Aantal rechthoeken met opp > 50: %d%n", aantalRechthoekenOppGroterDan50);
-        System.out.printf("Aantal rechthoekige driehoeken: %d%n", aantalRechthoekigeDriehoeken);
+        IO.println("Overzicht vormen:");
+        IO.println(String.format("Totaal aantal vormen: %d", totaalAantalVormen));
+        IO.println(String.format("Aantal rechthoeken met opp > 50: %d", aantalRechthoekenOppGroterDan50));
+        IO.println(String.format("Aantal rechthoekige driehoeken: %d", aantalRechthoekigeDriehoeken));
 
     }
 
     private int geefKeuzeVormIngeven() {
         int vorm;
         do {
-            System.out.print("Wil je graag nog een vorm ingeven (1=een rechthoek, 2=een driehoek, 0=nee)? ");
-            vorm = invoer.nextInt();
+            vorm = Integer.parseInt(IO.readln("Wil je graag nog een vorm ingeven (1=een rechthoek, 2=een driehoek, 0=nee)? "));
         }while(vorm<0 || vorm>2);
         return vorm;
     }
