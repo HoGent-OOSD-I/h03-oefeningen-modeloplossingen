@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: HoGent-OOSD-I/h03-oefeningen-starters
-          token: ${{ secrets.ADOC_SYNC_TOKEN }}
+          token: ${{ secrets.TEST_SYNC_TOKEN }}
           path: public
 
       - name: Sync test files to public repository
