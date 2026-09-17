@@ -3,11 +3,11 @@ package domein;
 public class Product {
 
     public final static int ONDERGRENS_BTW = 6, BOVENGRENS_BTW = 21,
-            BOVENGRENS_KORTING_STUKS = 50, MINIMUM_AANTAL_STUKS = 6, STANDAARDWAARDE_PRIJS = 1;
+            BOVENGRENS_KORTING_STUKS = 50, MINIMUM_AANTAL_STUKS = 6, DEFAULT_PRIJS_EXCL_BTW = 1;
     public final static String NAAM_ONBEKEND = "naam onbekend";
 
     private String naam = NAAM_ONBEKEND;
-    private double prijsExclBtw = STANDAARDWAARDE_PRIJS;
+    private double prijsExclBtw = DEFAULT_PRIJS_EXCL_BTW;
     private int btwPercentage = BOVENGRENS_BTW;
     private int kortingStuksPercentage;
 
@@ -24,12 +24,10 @@ public class Product {
             this.prijsExclBtw = prijsExclBtw;
     }
 
-
     private void setNaam(String naam) {
         if (naam != null && !naam.isBlank())
             this.naam = naam;
     }
-
 
     private void setBtwPercentage(int btwPercentage) {
         if (btwPercentage >= ONDERGRENS_BTW && btwPercentage <= BOVENGRENS_BTW)
@@ -41,11 +39,9 @@ public class Product {
             this.kortingStuksPercentage = kortingStuksPercentage;
     }
 
-
     public double getPrijsExclBtw() {
         return this.prijsExclBtw;
     }
-
 
     public int getBtwPercentage() {
         return this.btwPercentage;
@@ -60,7 +56,6 @@ public class Product {
     }
 
 
-
     public double berekenPrijs(int aantal) {
         //if (aantal < 0)
         //exception werpen (leerstof 2de semester)
@@ -70,6 +65,7 @@ public class Product {
 
         if (aantal >= MINIMUM_AANTAL_STUKS)
             teBetalen -= teBetalen * kortingStuksPercentage / 100;
+
         return teBetalen;
     }
 

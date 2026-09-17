@@ -18,7 +18,7 @@ public class VormApplicatie {
         int aantalRechthoekigeDriehoeken = 0;
         int totaalAantalVormen=0;
 
-        int vorm = geefKeuzeVormIngeven();
+        int vorm = vraagGebruikerKeuze();
 
         while (vorm != 0) {
 
@@ -48,7 +48,7 @@ public class VormApplicatie {
             }
             totaalAantalVormen++;
 
-            vorm = geefKeuzeVormIngeven();
+            vorm = vraagGebruikerKeuze();
 
         }
 
@@ -59,11 +59,8 @@ public class VormApplicatie {
 
     }
 
-    private int geefKeuzeVormIngeven() {
-        int vorm;
-        do {
-            vorm = Integer.parseInt(IO.readln("Wil je graag nog een vorm ingeven (1=een rechthoek, 2=een driehoek, 0=nee)? "));
-        }while(vorm<0 || vorm>2);
+    private int vraagGebruikerKeuze() {
+        int vorm = Integer.parseInt(IO.readln("Wil je graag nog een vorm ingeven (1=een rechthoek, 2=een driehoek, 0=nee)? "));
         return vorm;
     }
 }

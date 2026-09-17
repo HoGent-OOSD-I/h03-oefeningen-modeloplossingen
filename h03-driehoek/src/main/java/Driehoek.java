@@ -1,5 +1,3 @@
-package domein;
-
 public class Driehoek {
 
     public static final int STANDAARD_WAARDE = 1;
@@ -7,8 +5,6 @@ public class Driehoek {
     private int a = STANDAARD_WAARDE;
     private int b = STANDAARD_WAARDE;
     private int c = STANDAARD_WAARDE;
-
-
 
     public Driehoek(int a, int b, int c) {
         setA(a);

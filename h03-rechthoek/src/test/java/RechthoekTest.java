@@ -1,12 +1,10 @@
-package domein;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class RechthoekTest {
 
     @Test
-    void maakRechthoek_ZonderOpgaveVanLengteEnBreedte_MaaktDefaultRechthoek() {
+    void maakRechthoek_ZonderOpgaveVanLengteEnBreedte_MaaktRechthoekMetLengte10Breedte7() {
         Rechthoek r = new Rechthoek();
         Assertions.assertEquals(10.0, r.getLengte());
         Assertions.assertEquals(7.0, r.getBreedte());
@@ -20,55 +18,55 @@ class RechthoekTest {
     }
 
     @Test
-    void maakRechthoek_LengteNetGrootGenoeg_MaaktRechthoek() {
-        Rechthoek r = new Rechthoek(Double.MIN_VALUE, 4);
-        Assertions.assertEquals(Double.MIN_VALUE, r.getLengte());
-        Assertions.assertEquals(4.0, r.getBreedte());
-    }
-
-    @Test
-    void maakRechthoek_BreedteNetGrootGenoeg_MaaktRechthoek() {
-        Rechthoek r = new Rechthoek(4, Double.MIN_VALUE);
-        Assertions.assertEquals(4.0, r.getLengte());
-        Assertions.assertEquals(Double.MIN_VALUE, r.getBreedte());
-    }
-
-    @Test
-    void maakRechthoek_LengteNetTeKlein_MaaktRechthoekMetLengte1() {
+    void maakRechthoek_LengteNul_MaaktRechthoek() {
         Rechthoek r = new Rechthoek(0, 4);
-        Assertions.assertEquals(Rechthoek.STANDAARD_WAARDE, r.getLengte());
+        Assertions.assertEquals(0, r.getLengte());
         Assertions.assertEquals(4.0, r.getBreedte());
     }
 
     @Test
-    void maakRechthoek_LengteTeKlein_MaaktRechthoekMetLengte1() {
-        Rechthoek r = new Rechthoek(-10.55, 4);
-        Assertions.assertEquals(Rechthoek.STANDAARD_WAARDE, r.getLengte());
-        Assertions.assertEquals(4.0, r.getBreedte());
-    }
-
-    @Test
-    void maakRechthoek_BreedteNetTeKlein_MaaktRechthoekMetBreedte1() {
+    void maakRechthoek_BreedteNul_MaaktRechthoek() {
         Rechthoek r = new Rechthoek(4, 0);
         Assertions.assertEquals(4.0, r.getLengte());
-        Assertions.assertEquals(Rechthoek.STANDAARD_WAARDE, r.getBreedte());
+        Assertions.assertEquals(0, r.getBreedte());
     }
 
     @Test
-    void maakRechthoek_BreedteTeKlein_MaaktRechthoekMetBreedte1() {
+    void maakRechthoek_LengteNetNegatief_MaaktRechthoekMetLengte0() {
+        Rechthoek r = new Rechthoek(-Double.MIN_VALUE, 4);
+        Assertions.assertEquals(0, r.getLengte());
+        Assertions.assertEquals(4.0, r.getBreedte());
+    }
+
+    @Test
+    void maakRechthoek_LengteNegatief_MaaktRechthoekMetLengte0() {
+        Rechthoek r = new Rechthoek(-10.55, 4);
+        Assertions.assertEquals(0, r.getLengte());
+        Assertions.assertEquals(4.0, r.getBreedte());
+    }
+
+    @Test
+    void maakRechthoek_BreedteNetNegatief_MaaktRechthoekMetBreedte0() {
+        Rechthoek r = new Rechthoek(4, -Double.MIN_VALUE);
+        Assertions.assertEquals(4.0, r.getLengte());
+        Assertions.assertEquals(0, r.getBreedte());
+    }
+
+    @Test
+    void maakRechthoek_BreedteNegatief_MaaktRechthoekMetBreedte0() {
         Rechthoek r = new Rechthoek(4, -10.55);
         Assertions.assertEquals(4.0, r.getLengte());
-        Assertions.assertEquals(Rechthoek.STANDAARD_WAARDE, r.getBreedte());
+        Assertions.assertEquals(0, r.getBreedte());
     }
 
     @Test
-    void berekenOppervlakte_RetourneertOppervlakte() {
+    void berekenOppervlakte_RetourneertJuisteOppervlakte() {
         Rechthoek r = new Rechthoek(2, 4);
         Assertions.assertEquals(8.0, r.berekenOppervlakte(), 0.01);
     }
 
     @Test
-    void berekenOmtrek_RetourneertOmtrek() {
+    void berekenOmtrek_RetourneertJuisteOmtrek() {
         Rechthoek r = new Rechthoek(2, 4);
         Assertions.assertEquals(12.0, r.berekenOmtrek(), 0.01);
     }

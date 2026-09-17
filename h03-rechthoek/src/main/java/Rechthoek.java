@@ -1,13 +1,6 @@
-package domein;
-
 public class Rechthoek {
 
-    public static final double STANDAARD_WAARDE = 1;
-
-    private double lengte = STANDAARD_WAARDE;
-    private double breedte = STANDAARD_WAARDE;
-
-
+    private double lengte, breedte;
 
     public Rechthoek(double lengte, double breedte) {
         setLengte(lengte);
@@ -27,12 +20,12 @@ public class Rechthoek {
     }
 
     private void setLengte(double lengte) {
-        if (lengte > 0)
+        if (lengte >= 0)
             this.lengte = lengte;
     }
 
     private void setBreedte(double breedte) {
-        if (breedte > 0)
+        if (breedte >= 0)
             this.breedte = breedte;
     }
 
