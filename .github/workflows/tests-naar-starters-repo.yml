@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "**/src/test/java/**"
+      - "**/*Test.java"
   workflow_dispatch: # Allow manual trigger
 
 concurrency:
@@ -27,13 +27,13 @@ jobs:
           token: ${{ secrets.TEST_SYNC_TOKEN }}
           path: public
 
-      - name: Sync test files to public repository
+      - name: Copy test files to root of public repository
         run: |
-          # 1. Verwijder alle bestaande .java bestanden in de doelrepo (behalve git bestanden)
+          # 1. Verwijder oude testen in de root van de doelrepo
           find public -maxdepth 1 -type f -name "*Test.java" -delete
 
-          # 2. Kopieer alle huidige testbestanden over
-          find . -maxdepth 5 -not -path "./public/*" -path "*/src/test/java/*" -name "*Test.java" -exec cp {} public/ \;
+          # 2. Zoek alle *Test.java bestanden in alle submappen (ook packages) en kopieer ze naar public/
+          find . -type f -name "*Test.java" -not -path "./public/*" -exec cp -t public/ {} +
 
       - name: Commit and push changes
         working-directory: public
