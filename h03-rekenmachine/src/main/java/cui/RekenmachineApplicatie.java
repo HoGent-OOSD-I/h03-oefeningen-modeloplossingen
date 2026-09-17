@@ -12,7 +12,6 @@ public class RekenmachineApplicatie {
 
         Rekenmachine rekenmachine = new Rekenmachine();
         int keuze;
-        char bewerking = '+';
         double getal1, getal2;
 
         keuze = maakMenuKeuze();

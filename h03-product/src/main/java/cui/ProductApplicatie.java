@@ -30,12 +30,8 @@ public class ProductApplicatie {
 
     private int geefAantalStuks(String naam)
     {
-        int aantal;
-        do
-        {
-            String boodschap = String.format("%nHoeveel stuks wilt u van '%s'? ", naam);
-            aantal = Integer.parseInt(IO.readln(boodschap));
-        }while (aantal < 0);
+        String boodschap = String.format("%nHoeveel stuks wilt u van '%s'? ", naam);
+        int aantal = Integer.parseInt(IO.readln(boodschap));
         return aantal;
     }
 }
